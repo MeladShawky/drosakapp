@@ -1,4 +1,5 @@
 import 'package:drosak/controller/main_screen/main_screen_controller.dart';
+import 'package:drosak/core/resources/const_value.dart';
 import 'package:drosak/view/main_screen/widgets/custom_bottom_nav_bar_main_screen.dart';
 import 'package:flutter/material.dart';
 
@@ -26,11 +27,14 @@ class _MainScreenState extends State<MainScreen> {
 
   @override
   Widget build(BuildContext context) {
+  var arg=ModalRoute.of(context)!.settings.arguments as Map;
+  _controller.currentIndexScreen=int.parse(arg[ConstValue.kScreenIndex].toString());
+  _controller.inputDataBottomNavBar.add(_controller.currentIndexScreen);
     return Scaffold(
       body:StreamBuilder<int>(
         stream: _controller.outputDataBody,
         builder: (context, snapshot) {
-          return _controller.listBottomNavBarTabs[snapshot.data ?? 0].screen;
+          return _controller.listBottomNavBarTabs[snapshot.data==null?0:snapshot.data!].screen;
         },
       ),
       bottomNavigationBar: CustomBottomNavBarMainScreen(

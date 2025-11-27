@@ -28,8 +28,8 @@ class _ExploreAppScreenState extends State<ExploreAppScreen> {
         backgroundColor: ColorsManger.kBlackColor,
         appBar: CustomAppBarExploreScreen(),
         body: BodyExploreScreen(
-          onTap: () {
-            controller.goToMainScreen(nameSections: '', context: context);
+          onTap: (index) {
+            controller.goToMainScreen(value: index, context: context);
           },
         ),
       ),

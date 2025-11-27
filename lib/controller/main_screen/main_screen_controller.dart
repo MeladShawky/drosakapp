@@ -19,7 +19,7 @@ class MainScreenController {
   late Sink<int> inputDataBottomNavBar;
   late Stream<int> outputDataBottomNavBar;
   MainScreenController() {
-  initController();
+    initController();
   }
   void initController() {
     controllerBody = StreamController<int>.broadcast();
@@ -31,27 +31,19 @@ class MainScreenController {
     outputDataBottomNavBar = controllerBottomNavBar.stream;
     inputDataBottomNavBar.add(currentIndexScreen);
   }
+
   void disposeController() {
     controllerBody.close();
     inputDataBody.close();
     controllerBottomNavBar.close();
     inputDataBottomNavBar.close();
   }
+
   final List<TapsDatailsModel> listBottomNavBarTabs = [
     TapsDatailsModel(
-      title: ConstValue.kPaying,
-      screen: const PayingScreen(),
-      icon: AssetsValuesManger.kPaymentIcon,
-    ),
-    TapsDatailsModel(
-      screen: const AudienceScreen(),
-      title: ConstValue.kTheAudience,
-      icon: AssetsValuesManger.kTheAudienceIcon,
-    ),
-    TapsDatailsModel(
-      screen: const StudentsScreen(),
-      title: ConstValue.kStudents,
-      icon: AssetsValuesManger.kStudentsIcon,
+      screen: const EducationalStagesScreen(),
+      title: ConstValue.kEducationalStages,
+      icon: AssetsValuesManger.kEducationalStagesIcon,
     ),
     TapsDatailsModel(
       screen: const GroupsScreen(),
@@ -59,9 +51,19 @@ class MainScreenController {
       icon: AssetsValuesManger.kGroupsIcon,
     ),
     TapsDatailsModel(
-      screen: const EducationalStagesScreen(),
-      title: ConstValue.kEducationalStages,
-      icon: AssetsValuesManger.kEducationalStagesIcon,
+      screen: const StudentsScreen(),
+      title: ConstValue.kStudents,
+      icon: AssetsValuesManger.kStudentsIcon,
+    ),
+    TapsDatailsModel(
+      screen: const AudienceScreen(),
+      title: ConstValue.kTheAudience,
+      icon: AssetsValuesManger.kTheAudienceIcon,
+    ),
+    TapsDatailsModel(
+      title: ConstValue.kPaying,
+      screen: const PayingScreen(),
+      icon: AssetsValuesManger.kPaymentIcon,
     ),
   ];
   void onTapAtTabItemBottomNavBar(int index) {
