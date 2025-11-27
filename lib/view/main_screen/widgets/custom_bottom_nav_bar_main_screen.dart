@@ -9,13 +9,16 @@ class CustomBottomNavBarMainScreen extends StatelessWidget {
     required this.listIcon,
     required this.OutPutBottomNavBar,
     required this.onTap,
+    this.initialIndex = 0,
   });
   final List<TapsDatailsModel> listIcon;
   final ValueChanged<int> onTap;
   final Stream<int> OutPutBottomNavBar;
+  final int initialIndex;
   @override
   Widget build(BuildContext context) {
     return StreamBuilder<int>(
+      initialData: initialIndex,
       stream: OutPutBottomNavBar,
       builder: (context, snapshot) {
         return BottomNavigationBar(

@@ -27,18 +27,23 @@ class _MainScreenState extends State<MainScreen> {
 
   @override
   Widget build(BuildContext context) {
-  var arg=ModalRoute.of(context)!.settings.arguments as Map;
-  _controller.currentIndexScreen=int.parse(arg[ConstValue.kScreenIndex].toString());
-  _controller.inputDataBottomNavBar.add(_controller.currentIndexScreen);
+    var arg = ModalRoute.of(context)!.settings.arguments as Map;
+    _controller.currentIndexScreen = int.parse(
+      arg[ConstValue.kScreenIndex].toString(),
+    );
     return Scaffold(
-      body:StreamBuilder<int>(
+      body: StreamBuilder<int>(
+        initialData: _controller.currentIndexScreen,
         stream: _controller.outputDataBody,
         builder: (context, snapshot) {
-          return _controller.listBottomNavBarTabs[snapshot.data==null?0:snapshot.data!].screen;
+          return _controller
+              .listBottomNavBarTabs[snapshot.data == null ? 0 : snapshot.data!]
+              .screen;
         },
       ),
       bottomNavigationBar: CustomBottomNavBarMainScreen(
         listIcon: _controller.listBottomNavBarTabs,
+        initialIndex: _controller.currentIndexScreen,
         OutPutBottomNavBar: _controller.outputDataBottomNavBar,
         onTap: (int value) {
           _controller.onTapAtTabItemBottomNavBar(value);
