@@ -6,4 +6,5 @@ class ColorsManger{
   static const Color kWhite=Color(0xffffffff);
   static const Color kBlackLight=Color(0xff47463C);
   static const Color kGrayLight=Color(0xff1E1E1E);
+  static const Color kGray2LightText=Color(0xff514C4C);
 }

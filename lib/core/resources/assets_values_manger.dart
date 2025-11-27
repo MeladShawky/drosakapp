@@ -19,4 +19,6 @@ class AssetsValuesManger {
   static const String kGroupsIcon = '$_baseURlImage/Groups.svg';
   static const String kEducationalStagesIcon =
       '$_baseURlImage/EducationalStages.svg';
+  static const String kTestImage = '$_baseURlImage/test.png';
+
 }
